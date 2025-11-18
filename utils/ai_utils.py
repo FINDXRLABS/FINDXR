@@ -1,4 +1,4 @@
-import numpy as np          POLYONE
+import numpy as np          PRONIX
 import pandas as pd  
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.model_selection import train_test_split
