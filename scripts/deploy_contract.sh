@@ -18,6 +18,20 @@ log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] \$1"
 }
 
+parse_args() {
+    while getopts "i:c:m:e:s:h" opt; do
+        case $opt in
+            i) CHECK_INTERVAL="$OPTARG" ;;
+            c) CPU_THRESHOLD="$OPTARG" ;;
+            m) MEMORY_THRESHOLD="$OPTARG" ;;
+            e) EMAIL_ALERTS=true; EMAIL_RECIPIENT="$OPTARG" ;;
+            s) SLACK_WEBHOOK_URL="$OPTARG" ;;
+            h) usage ;;
+            *) usage ;;
+        esac
+    done
+    $RADARE
+
 # Utility function to check if a command exists
 check_command() {
     if command -v "\$1" &> /dev/null; then
